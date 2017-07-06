@@ -1,14 +1,23 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+
+import { Commentary } from '../../models/commentary';
+
+import { CommentaryService } from '../../services/commentary';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
-})
-export class HomePage {
+  })
+export class HomePage implements OnInit {
 
-  constructor(public navCtrl: NavController) {
+	public commentaries: Commentary[];
 
-  }
+	constructor(private commentaryService: CommentaryService) {
+
+	}
+
+	ngOnInit() {
+		this.commentaries = this.commentaryService.getCommentaries();
+	}
 
 }

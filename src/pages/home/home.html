@@ -1,14 +1,39 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Market Commentary Engine
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content class="cards-bg">
+	<ion-card *ngFor="let comm of commentaries">
+
+	  <img src="https://www.sc.com/global/av/mce/img/pubtype/c-{{comm.publicationType}}.jpg" />
+
+	  <ion-card-content>
+	  	  <ion-card-title>
+	        {{ comm.title }}
+	      </ion-card-title>
+	      <p *ngFor="let sum of comm.summary" class="col-50">
+	        {{ sum.bullet }}
+	      </p>
+	  </ion-card-content>
+
+	  <ion-row no-padding>
+	      <ion-col>
+	        <button ion-button clear small color="danger" icon-start>
+	          <ion-icon name='star'></ion-icon>
+	          Favorite
+	        </button>
+	      </ion-col>
+	      <ion-col text-right>
+	        <button ion-button clear small color="danger" icon-start>
+	          <ion-icon name='share-alt'></ion-icon>
+	          Share
+	        </button>
+	      </ion-col>
+	    </ion-row>
+
+	</ion-card>
 </ion-content>
